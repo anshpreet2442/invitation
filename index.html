@@ -18,10 +18,10 @@
         <div class="absolute inset-0 overflow-hidden">
             <div class="jumbo absolute -inset-[10px] opacity-50"></div>
         </div>
-            <h1 class="relative flex items-center text-5xl font-bold text-gray-800 dark:text-white dark:opacity-80 transition-colors" id="textToUpdate">
+              <h1 class="relative flex items-center text-5xl font-bold text-gray-800 dark:text-white dark:opacity-80 transition-colors" id="invitationText">
         charm
         <span class="ml-1 rounded-xl bg-current p-2 text-[0.7em] leading-none">
-            <span class="text-white dark:text-black" id="uiToUpdate">UI</span>
+            <span class="text-white dark:text-black">UI</span>
         </span>
     </h1>
 
@@ -29,35 +29,22 @@
 
 
           <script>
-        // Function to update text based on URL fragment
-        function updateTextBasedOnFragment() {
-            var fragment = window.location.hash.substr(1); // Get the fragment without '#'
-            var charmText = 'charm';
-            var uiText = 'UI';
+         // Get the fragment from the URL
+        var fragment = window.location.hash.substring(1);
 
-            // Update text based on the fragment
-            switch (fragment) {
-                case 'angel':
-                    charmText = 'angel';
-                    uiText = 'ok';
-                    break;
-                case 'akshit':
-                    charmText = 'akshit';
-                    uiText = 'bye';
-                    break;
-                // Add more cases for other fragments if needed
-            }
-
-            // Update the text in the HTML
-            document.getElementById('textToUpdate').textContent = charmText;
-            document.getElementById('uiToUpdate').textContent = uiText;
+        // Update the invitation text based on the fragment
+        switch(fragment) {
+            case 'angel':
+                document.getElementById('invitationText').innerHTML = 'angel <span class="ml-1 rounded-xl bg-current p-2 text-[0.7em] leading-none"><span class="text-white dark:text-black">ok</span></span>';
+                break;
+            case 'akshit':
+                document.getElementById('invitationText').innerHTML = 'akshit <span class="ml-1 rounded-xl bg-current p-2 text-[0.7em] leading-none"><span class="text-white dark:text-black">bye</span></span>';
+                break;
+            // Add more cases for other fragments as needed
+            default:
+                // Default text if fragment is not recognized
+                document.getElementById('invitationText').innerHTML = 'charm <span class="ml-1 rounded-xl bg-current p-2 text-[0.7em] leading-none"><span class="text-white dark:text-black">UI</span></span>';
         }
-
-        // Listen to changes in the URL fragment
-        window.addEventListener('hashchange', updateTextBasedOnFragment);
-
-        // Update text initially when the page loads
-        updateTextBasedOnFragment();
     </script>
         <div class="mt-4">
             <button onclick="toggleTheme()" class="px-3 py-1 border border-stone-200 rounded-full drop-shadow-sm text-sm text-stone-800 dark:text-white bg-white/40 dark:bg-black/40 backdrop-blur-lg hover:border-stone-300 transition-colors dark:border-stone-500 dark:hover:border-stone-400">♪</button>
