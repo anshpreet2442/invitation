@@ -18,12 +18,47 @@
         <div class="absolute inset-0 overflow-hidden">
             <div class="jumbo absolute -inset-[10px] opacity-50"></div>
         </div>
-        <h1 class="relative flex items-center text-5xl font-bold text-gray-800 dark:text-white dark:opacity-80 transition-colors">
-            charm
-            <span class="ml-1 rounded-xl bg-current p-2 text-[0.7em] leading-none">
-                <span class="text-white dark:text-black">UI</span>
-            </span>
-        </h1>
+            <h1 class="relative flex items-center text-5xl font-bold text-gray-800 dark:text-white dark:opacity-80 transition-colors" id="textToUpdate">
+        charm
+        <span class="ml-1 rounded-xl bg-current p-2 text-[0.7em] leading-none">
+            <span class="text-white dark:text-black" id="uiToUpdate">UI</span>
+        </span>
+    </h1>
+
+
+
+
+          <script>
+        // Function to update text based on URL fragment
+        function updateTextBasedOnFragment() {
+            var fragment = window.location.hash.substr(1); // Get the fragment without '#'
+            var charmText = 'charm';
+            var uiText = 'UI';
+
+            // Update text based on the fragment
+            switch (fragment) {
+                case 'angel':
+                    charmText = 'angel';
+                    uiText = 'ok';
+                    break;
+                case 'akshit':
+                    charmText = 'akshit';
+                    uiText = 'bye';
+                    break;
+                // Add more cases for other fragments if needed
+            }
+
+            // Update the text in the HTML
+            document.getElementById('textToUpdate').textContent = charmText;
+            document.getElementById('uiToUpdate').textContent = uiText;
+        }
+
+        // Listen to changes in the URL fragment
+        window.addEventListener('hashchange', updateTextBasedOnFragment);
+
+        // Update text initially when the page loads
+        updateTextBasedOnFragment();
+    </script>
         <div class="mt-4">
             <button onclick="toggleTheme()" class="px-3 py-1 border border-stone-200 rounded-full drop-shadow-sm text-sm text-stone-800 dark:text-white bg-white/40 dark:bg-black/40 backdrop-blur-lg hover:border-stone-300 transition-colors dark:border-stone-500 dark:hover:border-stone-400">Toggle Theme</button>
         </div>
